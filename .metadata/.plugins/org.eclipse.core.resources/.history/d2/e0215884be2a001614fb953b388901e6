@@ -1,0 +1,120 @@
+package com.sudoku;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+/**
+ * Mutable
+ * 
+ * @author Matt Kent
+ */
+public class Board implements Iterable<Square> {
+
+	private final Square[][] squares;
+	private final int numRows;
+	private final int numCols;
+	private final int boxSize;
+	private List<Square> squareList;
+	private SortedSet<Square> unsetSquares;
+	private final Set<Square> setSquares = new TreeSet<>(
+			new PositionComparator());
+
+	public Board(final int[][] squares) {
+		if (squares.length < 1) {
+			throw new IllegalArgumentException(
+					"squares must have a positive number of rows");
+		}
+		numRows = squares.length;
+		numCols = squares[0].length;
+		boxSize = (int) Math.round(Math.sqrt(numRows));
+		this.squares = new Square[numRows][numCols];
+		setSquareList();
+	}
+
+	private void initSquares() {
+		for (int row = 0; row < numRows; row++) {
+			for (int col = 0; col < numCols; col++) {
+				this.squares[row][col] = new Square((byte) squares[row][col],
+						Position.getInstance(row, col), this);
+			}
+		}
+	}
+	
+	public Board copy() {
+		final int[][] squareValues = new int[numRows][numCols];
+		for (int row = 0; row < numRows; row++) {
+			for (int col = 0; col < numCols; col++) {
+				squareValues[row][col] = squares[row][col].getValue();
+			}
+		}
+		return new Board(squareValues);
+	}
+
+	private void setSquareList() {
+		squareList = new ArrayList<Square>(numRows * numCols);
+		for (int row = 0; row < numRows; row++) {
+			for (int col = 0; col < numCols; col++) {
+				squareList.add(squares[row][col]);
+			}
+		}
+	}
+
+	public Square getSquare(final int row, final int col) {
+		return squares[row][col];
+	}
+
+	public Square getSquare(final Position pos) {
+		return getSquare(pos.getRow(), pos.getCol());
+	}
+
+	public byte getValue(final int row, final int col) {
+		return squares[row][col].getValue();
+	}
+
+	public int getNumRows() {
+		return numRows;
+	}
+
+	public int getNumCols() {
+		return numCols;
+	}
+
+	public int getBoxSize() {
+		return boxSize;
+	}
+
+	public SortedSet<Square> getUnsetSquares() {
+		return new TreeSet<Square>(unsetSquares);
+	}
+
+	public Set<Square> getSetSquares() {
+		return new TreeSet<Square>(setSquares);
+	}
+
+	void update(final Square square) {
+		setSquares.add(square);
+		unsetSquares.remove(square);
+	}
+
+	@Override
+	public String toString() {
+		final StringBuilder result = new StringBuilder();
+		for (int row = 0; row < numCols; row++) {
+			result.append(Arrays.toString(squares[row]));
+			result.append("\n");
+		}
+		result.deleteCharAt(result.length() - 1);
+		return result.toString();
+	}
+
+	@Override
+	public Iterator<Square> iterator() {
+		return squareList.iterator();
+	}
+
+}

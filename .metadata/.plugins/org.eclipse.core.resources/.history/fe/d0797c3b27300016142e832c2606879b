@@ -1,0 +1,17 @@
+package com.sudoku.validator;
+
+import com.sudoku.Boards;
+import com.sudoku.Boards16x16;
+
+/**
+ * @author Matt Kent
+ */
+public class AllBoxesValidatorSize16Test extends AbstractValidatorTest {
+
+	@Override
+	Validator getValidator(final int[][] board) {
+		return AllBoxesValidator.newInstance(Boards
+				.getBoard(Boards16x16.INVALID));
+	}
+
+}

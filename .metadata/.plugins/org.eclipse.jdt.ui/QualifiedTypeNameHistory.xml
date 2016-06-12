@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="com.sudoku.Board"/>
+<fullyQualifiedTypeName name="com.sudoku.validator.BoardValidator"/>
+<fullyQualifiedTypeName name="com.sudoku.Position"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="com.sudoku.Square"/>
+<fullyQualifiedTypeName name="com.sudoku.validator.UncompletedBoardValidator"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.sudoku.Boards"/>
+<fullyQualifiedTypeName name="com.sudoku.validator.AbstractValidatorTest"/>
+<fullyQualifiedTypeName name="com.sudoku.PossibleValuesComparator"/>
+<fullyQualifiedTypeName name="java.util.SortedSet"/>
+<fullyQualifiedTypeName name="junit.framework.Assert"/>
+<fullyQualifiedTypeName name="com.sudoku.validator.Validator"/>
+</qualifiedTypeNameHistroy>

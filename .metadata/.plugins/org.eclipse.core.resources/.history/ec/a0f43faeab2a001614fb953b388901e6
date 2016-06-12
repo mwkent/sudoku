@@ -1,0 +1,41 @@
+package com.sudoku.validator;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import com.sudoku.Boards;
+
+/**
+ * @author Matt Kent
+ */
+abstract class AbstractValidatorTest {
+
+	private Validator validator;
+
+	abstract Validator getValidator(int[][] board);
+
+	@Test
+	public void testAllZeros() {
+		validator = getValidator(Boards.allZeros());
+		Assert.assertTrue(validator.isValid());
+	}
+
+	@Test
+	public void testInvalidBoard() {
+		validator = getValidator(Boards.invalidBoard());
+		Assert.assertFalse(validator.isValid());
+	}
+
+	@Test
+	public void testCompletedBoard() {
+		validator = getValidator(Boards.completedBoard());
+		Assert.assertTrue(validator.isValid());
+	}
+
+	@Test
+	public void testIncompleteBoard() {
+		validator = getValidator(Boards.incompleteBoard());
+		Assert.assertTrue(validator.isValid());
+	}
+
+}

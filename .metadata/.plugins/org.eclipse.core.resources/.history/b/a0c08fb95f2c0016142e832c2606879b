@@ -1,0 +1,14 @@
+package com.sudoku.guesser;
+
+import com.sudoku.Board;
+
+/**
+ * @author Matt Kent
+ */
+public interface Guesser {
+
+	void guess(final Board board);
+
+	Board backtrack();
+
+}

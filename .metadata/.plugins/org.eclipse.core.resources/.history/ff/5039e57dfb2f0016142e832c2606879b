@@ -1,0 +1,41 @@
+package com.sudoku.validator;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import com.sudoku.Board;
+import com.sudoku.Position;
+import com.sudoku.Square;
+
+/**
+ * @author Matt Kent
+ */
+public class AllColumnsValidator implements Validator {
+
+	private List<ColumnValidator> columnValidators;
+	private final Board board;
+	private final int numRows;
+	private final int numCols;
+
+	public static AllColumnsValidator newInstance(final Board board) {
+		this.board = board;
+		numRows = board.getLength();
+		numCols = board.getLength();
+	}
+	
+	AllColumnsValidator(List<ColumnValidator> columnValidators) {
+		this.columnValidators = new ArrayList<ColumnValidator>(columnValidators);
+	}
+
+	@Override
+	public boolean isValid() {
+		for (ColumnValidator columnValidator : columnValidators) {
+			if (!columnValidator.isValid()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+}

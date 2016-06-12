@@ -1,0 +1,31 @@
+package com.sudoku;
+
+/**
+ * @author Matt Kent
+ */
+public class Guess {
+
+	public static final Guess INVALID = new Guess(Position.getInstance(-1, -1), (byte) -1);
+
+	private final Position position;
+	private final byte value;
+
+	public Guess(final Position position, final byte value) {
+		this.position = position;
+		this.value = value;
+	}
+
+	public Position getPosition() {
+		return position;
+	}
+
+	public byte getValue() {
+		return value;
+	}
+
+	@Override
+	public String toString() {
+		return position + ", value=" + value;
+	}
+
+}

@@ -1,0 +1,55 @@
+package com.sudoku.validator;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import com.sudoku.Board;
+import com.sudoku.Position;
+import com.sudoku.Square;
+
+/**
+ * @author Matt Kent
+ */
+public class BoxValidator implements Validator {
+
+	private final Board board;
+	private final int boxSize;
+	private final int boxRow;
+	private final int boxCol;
+
+	public BoxValidator(final Board board, final int boxRow, final int boxCol) {
+		this.board = board;
+		this.boxSize = board.getBoxSize();
+		this.boxRow = boxRow;
+		this.boxCol = boxCol;
+	}
+
+	@Override
+	public boolean isValid() {
+				final Set<Byte> usedValues = new HashSet<Byte>(
+						board.getLength());
+				final int startRow = boxRow * boxSize;
+				final int endRow = (boxRow+1) * boxSize;
+				final int startCol = boxCol * boxSize;
+				final int endCol = (boxCol + 1) * boxSize;
+				for (int row = startRow; row < endRow ; row++) {
+					for (int col = startCol; col < endCol; col++) {
+						final int row = i * boxSize + boxRow;
+						final int col = j * boxSize + boxCol;
+						final byte val = board.getValue(row, col);
+						if (val != Square.INVALID_VALUE) {
+							if (usedValues.contains(val)) {
+								System.out.println(Position.getInstance(row,
+										col) + " was invalid in the box");
+								return false;
+							}
+							usedValues.add(val);
+						}
+					}
+				}
+			}
+		}
+		return true;
+	}
+
+}

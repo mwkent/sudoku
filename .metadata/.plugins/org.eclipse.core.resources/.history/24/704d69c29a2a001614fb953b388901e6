@@ -1,0 +1,28 @@
+package com.sudoku.validator;
+
+import com.sudoku.Board;
+
+/**
+ * @author Matt Kent
+ */
+public class CompletedBoardValidator implements Validator {
+
+	private final BoxValidator boxValidator;
+	private final RowValidator rowValidator;
+	private final ColumnValidator columnValidator;
+	private final SquareValidator squareValidator;
+
+	public CompletedBoardValidator(final Board board, final int boxSize) {
+		this.boxValidator = new BoxValidator(board, boxSize);
+		this.rowValidator = new RowValidator(board);
+		this.columnValidator = new ColumnValidator(board);
+		this.squareValidator = new SquareValidator(board);
+	}
+
+	@Override
+	public boolean isValid() {
+		return squareValidator.isValid() && boxValidator.isValid()
+				&& rowValidator.isValid() && columnValidator.isValid();
+	}
+
+}

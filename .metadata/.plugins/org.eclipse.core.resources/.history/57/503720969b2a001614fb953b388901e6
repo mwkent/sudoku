@@ -1,0 +1,8 @@
+package com.sudoku.cache;
+
+/**
+ * @author Matt Kent
+ */
+public class BoardCache {
+
+}

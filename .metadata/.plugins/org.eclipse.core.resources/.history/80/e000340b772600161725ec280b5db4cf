@@ -1,0 +1,10 @@
+package com.sudoku;
+
+import java.util.Comparator;
+
+/**
+ * @author Matt Kent
+ */
+public class PossibleValuesComparator implements Comparator<? extends Square> {
+
+}

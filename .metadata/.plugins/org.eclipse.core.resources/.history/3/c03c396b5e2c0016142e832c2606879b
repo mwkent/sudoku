@@ -1,0 +1,8 @@
+package com.sudoku.guesser;
+
+/**
+ * @author Matt Kent
+ */
+public class BoardGuesser implements Guesser {
+
+}

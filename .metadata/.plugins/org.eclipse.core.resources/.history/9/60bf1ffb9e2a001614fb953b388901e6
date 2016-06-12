@@ -1,0 +1,24 @@
+package com.sudoku;
+
+/**
+ * @author Matt Kent
+ */
+public class Guess {
+
+	private Position position;
+	private byte value;
+	
+	public Guess(Position position, byte value) {
+		this.position = position;
+		this.value = value;
+	}
+
+	public Position getPosition() {
+		return position;
+	}
+
+	public byte getValue() {
+		return value;
+	}	
+	
+}

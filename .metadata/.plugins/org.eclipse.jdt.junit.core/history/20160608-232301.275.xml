@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="IterationTest" project="sudoku" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="com.sudoku.IterationTest" time="0.887">
+    <testcase name="testEasyBoard" classname="com.sudoku.IterationTest" time="0.0"/>
+    <testcase name="testHardBoard" classname="com.sudoku.IterationTest" time="0.796"/>
+    <testcase name="testMediumBoard" classname="com.sudoku.IterationTest" time="0.091"/>
+  </testsuite>
+</testrun>

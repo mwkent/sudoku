@@ -1,0 +1,130 @@
+package com.sudoku;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import com.sudoku.validator.UncompletedBoardValidator;
+import com.sudoku.validator.Validator;
+
+/**
+ * mutable
+ * 
+ * @author Matt Kent
+ */
+public class Square {
+
+	public static final byte INVALID_VALUE = 0;
+
+	private final Set<Byte> validValues;
+	private final Position pos;
+	private final Board board;
+	private final List<Byte> possibleValues = new ArrayList<Byte>();
+	private byte value;
+
+	Square(final Position pos, final Board board) {
+		this(INVALID_VALUE, pos, board);
+	}
+
+	Square(final byte value, final Position pos, final Board board) {
+		this.pos = pos;
+		this.value = value;
+		this.board = board;
+		validValues = new HashSet<Byte>(board.getNumRows());
+		for (byte i = 1; i <= board.getNumRows(); i++) {
+			validValues.add(i);
+		}
+		if (this.value == INVALID_VALUE) {
+			initPossibleValues();
+		}
+	}
+
+	private void initPossibleValues() {
+		for (final Byte val : validValues) {
+			possibleValues.add(val);
+		}
+	}
+
+	public void clearPossibleValues() {
+		possibleValues.clear();
+	}
+
+	public Set<Byte> getPossibleValues() {
+		return new HashSet<Byte>(possibleValues);
+	}
+
+	public boolean removePossibleValueAndUpdate(final Byte val) {
+		possibleValues.remove(val);
+		if (possibleValues.size() == 1 && value == 0) {
+			setValue(possibleValues.iterator().next());
+			// System.out.println("Updated " + toString());
+			return true;
+		}
+		return false;
+	}
+
+	public Position getPosition() {
+		return pos;
+	}
+
+	public byte getValue() {
+		return value;
+	}
+
+	public void setRandomValue() {
+		if (possibleValues.size() > 0) {
+			final Random gen = new Random();
+			setValue(possibleValues.get(gen.nextInt(possibleValues.size())));
+		}
+	}
+
+	public void setValue(final byte value) {
+		if (this.value != INVALID_VALUE) {
+			throw new IllegalStateException("Square " + toString()
+					+ " is already set");
+		}
+		if (!validValues.contains(value)) {
+			throw new IllegalArgumentException("value: " + value
+					+ " is invalid. Valid list is " + validValues);
+		}
+		this.value = value;
+		final Validator validator = new UncompletedBoardValidator(board);
+		if (!validator.isValid()) {
+			System.out.println("invalid");
+			System.out.println(pos);
+			System.out.println("possible values=" + possibleValues);
+			System.out.println(board);
+			throw new IllegalStateException("square is invalid" + square);
+		}
+		// just added
+		clearPossibleValues();
+		board.squareUpdated(this);
+		board.updateFrom(this);
+	}
+
+	boolean isSet() {
+		return value != INVALID_VALUE;
+	}
+
+	@Override
+	public String toString() {
+		return pos + ", val=" + value;
+	}
+
+	@Override
+	public boolean equals(final Object o) {
+		if (!(o instanceof Square)) {
+			return false;
+		}
+		final Square that = (Square) o;
+		return this.pos.equals(that.pos);
+	}
+
+	@Override
+	public int hashCode() {
+		return pos.hashCode();
+	}
+
+}

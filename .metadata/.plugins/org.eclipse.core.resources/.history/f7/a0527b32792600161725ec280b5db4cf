@@ -1,0 +1,21 @@
+package com.sudoku;
+
+import java.util.Comparator;
+import java.util.Set;
+
+/**
+ * @author Matt Kent
+ */
+public class PossibleValuesComparator implements Comparator<Square> {
+
+	@Override
+	public int compare(Square o1, Square o2) {
+		int numO1PossVals = o1.getPossibleValues().size();
+		int numO2PossVals = o2.getPossibleValues().size();
+		if (numO1PossVals < 2) {
+			return 1;
+		}
+		return numO1PossVals == numO2PossVals ? 0 : numO1PossVals < numO2PossVals ? -1 : 1;
+	}
+
+}

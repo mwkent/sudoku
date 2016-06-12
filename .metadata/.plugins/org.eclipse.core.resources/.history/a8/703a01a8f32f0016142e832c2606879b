@@ -1,0 +1,40 @@
+package com.sudoku.validator;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import com.sudoku.Board;
+import com.sudoku.Position;
+import com.sudoku.Square;
+
+/**
+ * @author Matt Kent
+ */
+public class AllRowsValidator implements Validator {
+
+	private final Board board;
+
+	public AllRowsValidator(final Board board) {
+		this.board = board;
+	}
+
+	@Override
+	public boolean isValid() {
+		for (int row = 0; row < numRows; row++) {
+			final Set<Byte> usedValues = new HashSet<Byte>(numRows);
+			for (int col = 0; col < numCols; col++) {
+				final byte val = board.getValue(row, col);
+				if (val != Square.INVALID_VALUE) {
+					if (usedValues.contains(val)) {
+						System.out.println(Position.getInstance(row, col)
+								+ " was invalid in the row");
+						return false;
+					}
+					usedValues.add(val);
+				}
+			}
+		}
+		return true;
+	}
+
+}

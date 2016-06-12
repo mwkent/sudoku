@@ -1,0 +1,38 @@
+package com.sudoku.updater;
+
+import com.sudoku.Board;
+import com.sudoku.Position;
+import com.sudoku.Square;
+
+/**
+ * @author Matt Kent
+ */
+class ColumnUpdater implements Updater {
+
+	private final Board board;
+
+	ColumnUpdater(final Board board) {
+		this.board = board;
+	}
+
+	/**
+	 * Updates the column with the squares value.
+	 */
+	@Override
+	public boolean update(final Square square) {
+		final byte takenValue = square.getValue();
+		boolean updated = false;
+		if (takenValue != Square.INVALID_VALUE) {
+			final Position pos = square.getPosition();
+			final int col = pos.getCol();
+			for (int row = 0; row < board.getLength(); row++) {
+				if (board.getSquare(row, col).removePossibleValueAndUpdate(
+						takenValue)) {
+					updated = true;
+				}
+			}
+		}
+		return updated;
+	}
+
+}

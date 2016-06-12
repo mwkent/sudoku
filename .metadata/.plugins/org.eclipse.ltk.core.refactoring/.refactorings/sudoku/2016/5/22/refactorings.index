@@ -1,0 +1,13 @@
+1464403322107	Delete element
+1464458999565	Rename method 'checkSquare'
+1464459006425	Rename method 'checkBox'
+1464459017620	Rename method 'checkCol'
+1464459024580	Rename method 'checkRow'
+1464460349594	Rename local variable 'i'
+1464461144871	Rename package 'sudoku'
+1464461643856	Rename local variable 'col'
+1464467215843	Rename type 'BoardValidator'
+1464467283858	Rename type 'BoardValidator'
+1464467288802	Rename type 'SudokuBoardValidator'
+1464467324183	Move compilation unit
+1464467330435	Move compilation unit

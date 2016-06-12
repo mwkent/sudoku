@@ -1,0 +1,93 @@
+package com.sudoku;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.SortedSet;
+
+import com.sudoku.cache.BoardCache;
+import com.sudoku.validator.UncompletedBoardValidator;
+
+/**
+ * @author Matt Kent
+ */
+public class SudokuSolver {
+
+	private Board board;
+	private UncompletedBoardValidator validator;
+	private final BoardCache boardCache;
+	private final Deque<Guess> guesses = new ArrayDeque<>();
+	private int numIters;
+	private boolean justUpdated = true;
+
+	public SudokuSolver(final Board board) {
+		setBoard(board);
+		boardCache = new BoardCache();
+	}
+
+	private void setBoard(final Board board) {
+		this.board = board;
+		validator = new UncompletedBoardValidator(board);
+	}
+
+	public void solve() {
+		iterateSquares();
+		while (!isCompleted()) {
+			System.out.println(board);
+			System.out.println();
+			if (isBoardValid()) {
+				boardCache.cache(board);
+				guess();
+			} else {
+				setBoard(boardCache.getCached());
+				removeInvalidGuess();
+			}
+		}
+		System.out.println(board);
+		System.out.println();
+		System.out.println("Number of iterations: " + numIters);
+	}
+
+	private void guess() {
+		final Square bestProspect = board.getUnsetSquares().first();
+		final byte val = bestProspect.getPossibleValues().iterator().next();
+		bestProspect.setValue(val);
+		bestProspect.clearPossibleValues();
+		final Guess guess = new Guess(bestProspect.getPosition(), val);
+		guesses.push(guess);
+		System.out.println("Guessed " + guess);
+	}
+
+	private Square getBestProspect() {
+		final SortedSet<Square> unsetSquares = board.getUnsetSquares();
+		final Square bestProspect = unsetSquares.first();
+		for (final Square square : unsetSquares) {
+			if (square.getPossibleValues().size() < bestProspect
+					.getPossibleValues().size()) {
+				bestProspect = square;
+			}
+		}
+		return bestProspect;
+	}
+
+	private void removeInvalidGuess() {
+		final Guess mostRecentGuess = guesses.pop();
+		final Square guessedSquare = board.getSquare(mostRecentGuess
+				.getPosition());
+		guessedSquare.removePossibleValueAndUpdate(mostRecentGuess.getValue());
+	}
+
+	public void iterateSquares() {
+		numIters++;
+		justUpdated = false;
+		board.updateFromAll();
+	}
+
+	private boolean isCompleted() {
+		return board.getUnsetSquares().isEmpty();
+	}
+
+	private boolean isBoardValid() {
+		return validator.isValid();
+	}
+
+}

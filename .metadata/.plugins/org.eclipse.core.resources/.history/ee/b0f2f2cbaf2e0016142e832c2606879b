@@ -1,0 +1,31 @@
+package com.sudoku;
+
+import java.lang.annotation.IncompleteAnnotationException;
+import java.util.Random;
+
+import com.sudoku.validator.UncompletedBoardValidator;
+import com.sudoku.validator.Validator;
+
+/**
+ * @author Matt Kent
+ */
+public class BoardGenerator {
+
+	BoardGenerator(final int size) {
+		final Board board = new Board(Boards16x16.EMPTY);
+		final Random gen = new Random();
+		for (final Square square : board) {
+			if (gen.nextBoolean()) {
+				square.setRandomValue();
+			}
+		}
+		Validator validator = new UncompletedBoardValidator(board);
+		System.out.println(board.isValid());
+		System.out.println(board);
+	}
+
+	public static void main(final String[] args) {
+		new BoardGenerator(16);
+	}
+
+}

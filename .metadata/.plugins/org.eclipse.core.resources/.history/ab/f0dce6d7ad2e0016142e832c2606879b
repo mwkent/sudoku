@@ -1,0 +1,20 @@
+package com.sudoku;
+
+import java.util.Random;
+
+/**
+ * @author Matt Kent
+ */
+public class BoardGenerator {
+
+	BoardGenerator(final int size) {
+		final Board board = new Board(Boards16x16.EMPTY);
+		Random gen = new Random();
+		for (Square square : board) {
+		if (gen.nextBoolean()) {
+			square.setRandomValue();
+		}
+		}
+	}
+
+}

@@ -1,0 +1,12 @@
+package com.sudoku;
+
+/**
+ * @author Matt Kent
+ */
+public class BoardGenerator {
+
+	BoardGenerator(final int size) {
+		final Board board = new Board(Boards16x16.EASY);
+	}
+
+}

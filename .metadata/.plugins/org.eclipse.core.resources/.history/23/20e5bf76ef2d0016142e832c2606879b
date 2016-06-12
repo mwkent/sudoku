@@ -1,0 +1,63 @@
+package com.sudoku;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import com.sudoku.validator.CompletedBoardValidator;
+
+/**
+ * @author Matt Kent
+ */
+public class IterationTest {
+
+	@Test
+	public void testEasyBoard() {
+		printLine();
+		System.out.println("EASY BOARD");
+		printLine();
+		final Board board = new Board(Boards.getEasyBoard());
+		final SudokuSolver solver = new SudokuSolver(board);
+		solver.solve();
+		final CompletedBoardValidator validator = new CompletedBoardValidator(
+				board);
+		final boolean valid = validator.isValid();
+		Assert.assertTrue(valid);
+	}
+
+	@Test
+	public void testMediumBoard() {
+		System.out.println();
+		printLine();
+		System.out.println("MEDIUM BOARD");
+		printLine();
+		final Board board = new Board(Boards.getMediumBoard());
+		final SudokuSolver solver = new SudokuSolver(board);
+		final Board completedBoard = solver.solve();
+		final CompletedBoardValidator validator = new CompletedBoardValidator(
+				completedBoard);
+		final boolean valid = validator.isValid();
+		System.out.println(validator.isValid());
+		Assert.assertTrue(valid);
+	}
+
+	@Test
+	public void testHardBoard() {
+		System.out.println();
+		printLine();
+		System.out.println("HARD BOARD");
+		printLine();
+		final Board board = new Board(Boards.getHardBoard());
+		final SudokuSolver solver = new SudokuSolver(board);
+		final Board completedBoard = solver.solve();
+		final CompletedBoardValidator validator = new CompletedBoardValidator(
+				completedBoard);
+		final boolean valid = validator.isValid();
+		System.out.println(validator.isValid());
+		Assert.assertTrue(valid);
+	}
+
+	private void printLine() {
+		System.out.println("-------------------------------");
+	}
+
+}

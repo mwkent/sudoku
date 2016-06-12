@@ -1,0 +1,8 @@
+package com.sudoku.validator;
+
+/**
+ * @author Matt Kent
+ */
+public class RowValidatorTest {
+
+}

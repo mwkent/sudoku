@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="com.sudoku.updater" project="sudoku" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="com.sudoku.updater.UpdaterFromColumnTest" time="0.0">
+    <testcase name="test" classname="com.sudoku.updater.UpdaterFromColumnTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="com.sudoku.updater.UpdaterFromBoxTest" time="0.0">
+    <testcase name="test" classname="com.sudoku.updater.UpdaterFromBoxTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="com.sudoku.updater.UpdaterFromRowTest" time="0.0">
+    <testcase name="test" classname="com.sudoku.updater.UpdaterFromRowTest" time="0.0"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,39 @@
+package com.sudoku;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import com.sudoku.validator.BoxValidator;
+
+/**
+ * @author Matt Kent
+ */
+public class BoxValidatorTest {
+
+	private BoxValidator validator;
+
+	@Test
+	public void testAllZeros() {
+		validator = new BoxValidator(new Board(Boards.allZeros()));
+		Assert.assertTrue(validator.isValid());
+	}
+
+	@Test
+	public void testCompletedBox() {
+		validator = new BoxValidator(new Board(Boards.completedBox()));
+		Assert.assertTrue(validator.isValid());
+	}
+
+	@Test
+	public void testInvalidBox() {
+		validator = new BoxValidator(new Board(Boards.invalidBox()));
+		Assert.assertFalse(validator.isValid());
+	}
+
+	@Test
+	public void testCompletedBoard() {
+		validator = new BoxValidator(new Board(Boards.completedBoard()));
+		Assert.assertFalse(validator.isValid());
+	}
+
+}

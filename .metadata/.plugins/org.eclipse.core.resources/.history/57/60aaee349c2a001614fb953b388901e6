@@ -1,0 +1,14 @@
+package com.sudoku.cache;
+
+import com.sudoku.Board;
+
+/**
+ * @author Matt Kent
+ */
+public interface Cache<E> {
+
+	void cache();
+
+	E getCached();
+	
+}

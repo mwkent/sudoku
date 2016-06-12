@@ -1,0 +1,111 @@
+package com.sudoku;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+import com.sudoku.cache.BoardCache;
+import com.sudoku.updater.SquareUpdater;
+import com.sudoku.updater.Updater;
+import com.sudoku.validator.UncompletedBoardValidator;
+
+/**
+ * @author Matt Kent
+ */
+public class SudokuSolver {
+
+	private Board board;
+	private Updater updater;
+	private UncompletedBoardValidator validator;
+	private final BoardCache boardCache;
+	private final Deque<Guess> guesses = new ArrayDeque<>();
+	private int numIters;
+	private boolean justUpdated = true;
+
+	public SudokuSolver(final Board board) {
+		setBoard(board);
+		boardCache = new BoardCache(board);
+	}
+
+	private void setBoard(final Board board) {
+		this.board = board;
+		updater = new SquareUpdater(board);
+		validator = new UncompletedBoardValidator(board);
+		findSetAndUnsetSquares();
+	}
+
+	public void solve() {
+		while (!isCompleted()) {
+			System.out.println(board);
+			System.out.println();
+			if (isBoardValid()) {
+				iterateSquares();
+				if (!justUpdated) {
+					boardCache.cache();
+					guess();
+				}
+				findSetAndUnsetSquares();
+			} else {
+				setBoard(boardCache.getCached());
+				removeInvalidGuess();
+			}
+		}
+		System.out.println(board);
+		System.out.println();
+		System.out.println("Number of iterations: " + numIters);
+	}
+
+	private void guess() {
+		final Square bestProspect = board.getUnsetSquares().first();
+		final byte val = bestProspect.getPossibleValues().iterator().next();
+		bestProspect.setValue(val);
+		bestProspect.clearPossibleValues();
+		final Guess guess = new Guess(bestProspect.getPosition(), val);
+		guesses.add(guess);
+		justUpdated = true;
+		System.out.println("Guessed " + guess);
+	}
+
+	private void removeInvalidGuess() {
+		final Guess mostRecentGuess = guesses.pop();
+		final Square guessedSquare = board.getSquare(mostRecentGuess
+				.getPosition());
+		justUpdated = guessedSquare
+				.removePossibleValueAndUpdate(mostRecentGuess.getValue());
+	}
+
+	public void iterateSquares() {
+		numIters++;
+		justUpdated = false;
+		for (final Square square : board.getSetSquares()) {
+			if (updater.update(square)) {
+				justUpdated = true;
+			}
+		}
+	}
+
+	private boolean isCompleted() {
+		return board.getUnsetSquares().isEmpty();
+	}
+
+	private boolean isBoardValid() {
+		return validator.isValid();
+	}
+
+	// update this on the fly instead of iterating through all squares
+	// private void findSetAndUnsetSquares() {
+	// unsetSquares = new TreeSet<Square>(new PossibleValuesComparator());
+	// for (final Square square : board) {
+	// if (square.isSet()) {
+	// setSquares.add(square);
+	// } else {
+	// unsetSquares.add(square);
+	// }
+	// }
+	// System.out.print("setSquares=");
+	// for (final Square square : setSquares) {
+	// System.out.print(square.toFullString() + " | ");
+	// }
+	// System.out.println();
+	// }
+
+}

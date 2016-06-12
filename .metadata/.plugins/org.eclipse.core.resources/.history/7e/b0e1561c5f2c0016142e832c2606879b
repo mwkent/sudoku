@@ -1,0 +1,23 @@
+package com.sudoku.guesser;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+import com.sudoku.Board;
+import com.sudoku.cache.BoardCache;
+
+/**
+ * @author Matt Kent
+ */
+public class BoardGuesser implements Guesser {
+
+	private final BoardCache boardCache = new BoardCache();
+	private final Deque<Guess> guesses = new ArrayDeque<>();
+
+	public void guess(final Board board) {
+		boardCache.cache(board);
+		guess();
+
+	}
+
+}

@@ -1,0 +1,4 @@
+1465075060554	Rename type 'BoardValidator'
+1465077387173	Rename field 'cachedBoard'
+1465081843815	Rename method 'invalidBox'
+1465082080182	Move compilation unit

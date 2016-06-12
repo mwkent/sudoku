@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="java" project="sudoku" tests="35" started="35" failures="0" errors="3" ignored="0">
+  <testsuite name="com.sudoku.validator.ColumnValidatorTest" time="0.0">
+    <testcase name="testAllZeros" classname="com.sudoku.validator.ColumnValidatorTest" time="0.0"/>
+    <testcase name="testIncompleteBoard" classname="com.sudoku.validator.ColumnValidatorTest" time="0.0"/>
+    <testcase name="testCompletedBoard" classname="com.sudoku.validator.ColumnValidatorTest" time="0.0"/>
+    <testcase name="testInvalidBoard" classname="com.sudoku.validator.ColumnValidatorTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="com.sudoku.validator.CompletedBoardValidatorTest" time="0.0">
+    <testcase name="testAllZeros" classname="com.sudoku.validator.CompletedBoardValidatorTest" time="0.0"/>
+    <testcase name="testIncompleteBoard" classname="com.sudoku.validator.CompletedBoardValidatorTest" time="0.0"/>
+    <testcase name="testCompletedBoard" classname="com.sudoku.validator.CompletedBoardValidatorTest" time="0.0"/>
+    <testcase name="testInvalidBoard" classname="com.sudoku.validator.CompletedBoardValidatorTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="com.sudoku.validator.SquareValidatorTest" time="0.0">
+    <testcase name="testAllZeros" classname="com.sudoku.validator.SquareValidatorTest" time="0.0"/>
+    <testcase name="testIncompleteBoard" classname="com.sudoku.validator.SquareValidatorTest" time="0.0"/>
+    <testcase name="testCompletedBoard" classname="com.sudoku.validator.SquareValidatorTest" time="0.0"/>
+    <testcase name="testInvalidBoard" classname="com.sudoku.validator.SquareValidatorTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="com.sudoku.cache.BoardCacheTest" time="0.046">
+    <testcase name="test" classname="com.sudoku.cache.BoardCacheTest" time="0.046"/>
+  </testsuite>
+  <testsuite name="com.sudoku.validator.BoxValidatorTest" time="0.007">
+    <testcase name="testAllZeros" classname="com.sudoku.validator.BoxValidatorTest" time="0.004"/>
+    <testcase name="testIncompleteBoard" classname="com.sudoku.validator.BoxValidatorTest" time="0.001"/>
+    <testcase name="testCompletedBoard" classname="com.sudoku.validator.BoxValidatorTest" time="0.001"/>
+    <testcase name="testInvalidBoard" classname="com.sudoku.validator.BoxValidatorTest" time="0.001"/>
+  </testsuite>
+  <testsuite name="com.sudoku.updater.UpdaterFromColumnTest" time="0.005">
+    <testcase name="test" classname="com.sudoku.updater.UpdaterFromColumnTest" time="0.005"/>
+  </testsuite>
+  <testsuite name="com.sudoku.guesser.BoardGuesserTest" time="0.029">
+    <testcase name="testBacktrackRetrievesCachedBoard" classname="com.sudoku.guesser.BoardGuesserTest" time="0.029"/>
+  </testsuite>
+  <testsuite name="com.sudoku.BoardTest" time="0.029">
+    <testcase name="testCopy" classname="com.sudoku.BoardTest" time="0.029"/>
+  </testsuite>
+  <testsuite name="com.sudoku.validator.UncompletedBoardValidatorTest" time="0.029">
+    <testcase name="testTestBoard" classname="com.sudoku.validator.UncompletedBoardValidatorTest" time="0.025"/>
+    <testcase name="testAllZeros" classname="com.sudoku.validator.UncompletedBoardValidatorTest" time="0.0"/>
+    <testcase name="testIncompleteBoard" classname="com.sudoku.validator.UncompletedBoardValidatorTest" time="0.001"/>
+    <testcase name="testCompletedBoard" classname="com.sudoku.validator.UncompletedBoardValidatorTest" time="0.001"/>
+    <testcase name="testInvalidBoard" classname="com.sudoku.validator.UncompletedBoardValidatorTest" time="0.002"/>
+  </testsuite>
+  <testsuite name="com.sudoku.validator.RowValidatorTest" time="0.005">
+    <testcase name="testAllZeros" classname="com.sudoku.validator.RowValidatorTest" time="0.001"/>
+    <testcase name="testIncompleteBoard" classname="com.sudoku.validator.RowValidatorTest" time="0.002"/>
+    <testcase name="testCompletedBoard" classname="com.sudoku.validator.RowValidatorTest" time="0.001"/>
+    <testcase name="testInvalidBoard" classname="com.sudoku.validator.RowValidatorTest" time="0.001"/>
+  </testsuite>
+  <testsuite name="com.sudoku.updater.UpdaterFromBoxTest" time="0.006">
+    <testcase name="test" classname="com.sudoku.updater.UpdaterFromBoxTest" time="0.006"/>
+  </testsuite>
+  <testsuite name="com.sudoku.IterationTest" time="0.144">
+    <testcase name="testEasyBoard" classname="com.sudoku.IterationTest" time="0.079"/>
+    <testcase name="testHardBoard" classname="com.sudoku.IterationTest" time="0.046">
+      <error>java.lang.IllegalStateException: square is invalid:(4, 6), val=7
+	at com.sudoku.Square.setValue(Square.java:95)
+	at com.sudoku.Square.removePossibleValueAndUpdate(Square.java:58)
+	at com.sudoku.updater.UpdaterFromBox.update(UpdaterFromBox.java:35)
+	at com.sudoku.updater.SquareUpdater.update(SquareUpdater.java:25)
+	at com.sudoku.Board.updateFrom(Board.java:65)
+	at com.sudoku.Square.setValue(Square.java:100)
+	at com.sudoku.Square.removePossibleValueAndUpdate(Square.java:58)
+	at com.sudoku.updater.UpdaterFromBox.update(UpdaterFromBox.java:35)
+	at com.sudoku.updater.SquareUpdater.update(SquareUpdater.java:25)
+	at com.sudoku.Board.updateFrom(Board.java:65)
+	at com.sudoku.Square.setValue(Square.java:100)
+	at com.sudoku.Square.removePossibleValueAndUpdate(Square.java:58)
+	at com.sudoku.updater.UpdaterFromColumn.update(UpdaterFromColumn.java:29)
+	at com.sudoku.updater.SquareUpdater.update(SquareUpdater.java:26)
+	at com.sudoku.Board.updateFrom(Board.java:65)
+	at com.sudoku.Square.setValue(Square.java:100)
+	at com.sudoku.Square.removePossibleValueAndUpdate(Square.java:58)
+	at com.sudoku.updater.UpdaterFromBox.update(UpdaterFromBox.java:35)
+	at com.sudoku.updater.SquareUpdater.update(SquareUpdater.java:25)
+	at com.sudoku.Board.updateFrom(Board.java:65)
+	at com.sudoku.Square.setValue(Square.java:100)
+	at com.sudoku.Square.removePossibleValueAndUpdate(Square.java:58)
+	at com.sudoku.updater.UpdaterFromBox.update(UpdaterFromBox.java:35)
+	at com.sudoku.updater.SquareUpdater.update(SquareUpdater.java:25)
+	at com.sudoku.Board.updateFrom(Board.java:65)
+	at com.sudoku.Square.setValue(Square.java:100)
+	at com.sudoku.Square.removePossibleValueAndUpdate(Square.java:58)
+	at com.sudoku.updater.UpdaterFromBox.update(UpdaterFromBox.java:35)
+	at com.sudoku.updater.SquareUpdater.update(SquareUpdater.java:25)
+	at com.sudoku.Board.updateFrom(Board.java:65)
+	at com.sudoku.Square.setValue(Square.java:100)
+	at com.sudoku.Square.removePossibleValueAndUpdate(Square.java:58)
+	at com.sudoku.updater.UpdaterFromRow.update(UpdaterFromRow.java:29)
+	at com.sudoku.updater.SquareUpdater.update(SquareUpdater.java:27)
+	at com.sudoku.Board.updateFrom(Board.java:65)
+	at com.sudoku.Square.setValue(Square.java:100)
+	at com.sudoku.Square.removePossibleValueAndUpdate(Square.java:58)
+	at com.sudoku.updater.UpdaterFromColumn.update(UpdaterFromColumn.java:29)
+	at com.sudoku.updater.SquareUpdater.update(SquareUpdater.java:26)
+	at com.sudoku.Board.updateFrom(Board.java:65)
+	at com.sudoku.Square.setValue(Square.java:100)
+	at com.sudoku.guesser.BoardGuesser.makeGuess(BoardGuesser.java:51)
+	at com.sudoku.guesser.BoardGuesser.guess(BoardGuesser.java:27)
+	at com.sudoku.SudokuSolver.solve(SudokuSolver.java:38)
+	at com.sudoku.IterationTest.testHardBoard(IterationTest.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+</error>
+    </testcase>
+    <testcase name="testHardestBoard" classname="com.sudoku.IterationTest" time="0.005">
+      <error>java.lang.IllegalStateException: square is invalid:(5, 6), val=5
+	at com.sudoku.Square.setValue(Square.java:95)
+	at com.sudoku.Square.removePossibleValueAndUpdate(Square.java:58)
+	at com.sudoku.updater.UpdaterFromColumn.update(UpdaterFromColumn.java:29)
+	at com.sudoku.updater.SquareUpdater.update(SquareUpdater.java:26)
+	at com.sudoku.Board.updateFrom(Board.java:65)
+	at com.sudoku.Square.setValue(Square.java:100)
+	at com.sudoku.Square.removePossibleValueAndUpdate(Square.java:58)
+	at com.sudoku.updater.UpdaterFromColumn.update(UpdaterFromColumn.java:29)
+	at com.sudoku.updater.SquareUpdater.update(SquareUpdater.java:26)
+	at com.sudoku.Board.updateFrom(Board.java:65)
+	at com.sudoku.Square.setValue(Square.java:100)
+	at com.sudoku.Square.removePossibleValueAndUpdate(Square.java:58)
+	at com.sudoku.updater.UpdaterFromColumn.update(UpdaterFromColumn.java:29)
+	at com.sudoku.updater.SquareUpdater.update(SquareUpdater.java:26)
+	at com.sudoku.Board.updateFrom(Board.java:65)
+	at com.sudoku.Square.setValue(Square.java:100)
+	at com.sudoku.guesser.BoardGuesser.makeGuess(BoardGuesser.java:51)
+	at com.sudoku.guesser.BoardGuesser.guess(BoardGuesser.java:27)
+	at com.sudoku.SudokuSolver.solve(SudokuSolver.java:38)
+	at com.sudoku.IterationTest.testHardestBoard(IterationTest.java:68)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+</error>
+    </testcase>
+    <testcase name="testMediumBoard" classname="com.sudoku.IterationTest" time="0.011">
+      <error>java.lang.IllegalStateException: square is invalid:(8, 1), val=5
+	at com.sudoku.Square.setValue(Square.java:95)
+	at com.sudoku.Square.removePossibleValueAndUpdate(Square.java:58)
+	at com.sudoku.updater.UpdaterFromBox.update(UpdaterFromBox.java:35)
+	at com.sudoku.updater.SquareUpdater.update(SquareUpdater.java:25)
+	at com.sudoku.Board.updateFrom(Board.java:65)
+	at com.sudoku.Square.setValue(Square.java:100)
+	at com.sudoku.Square.removePossibleValueAndUpdate(Square.java:58)
+	at com.sudoku.updater.UpdaterFromColumn.update(UpdaterFromColumn.java:29)
+	at com.sudoku.updater.SquareUpdater.update(SquareUpdater.java:26)
+	at com.sudoku.Board.updateFrom(Board.java:65)
+	at com.sudoku.Square.setValue(Square.java:100)
+	at com.sudoku.Square.removePossibleValueAndUpdate(Square.java:58)
+	at com.sudoku.updater.UpdaterFromBox.update(UpdaterFromBox.java:35)
+	at com.sudoku.updater.SquareUpdater.update(SquareUpdater.java:25)
+	at com.sudoku.Board.updateFrom(Board.java:65)
+	at com.sudoku.Square.setValue(Square.java:100)
+	at com.sudoku.guesser.BoardGuesser.makeGuess(BoardGuesser.java:51)
+	at com.sudoku.guesser.BoardGuesser.guess(BoardGuesser.java:27)
+	at com.sudoku.SudokuSolver.solve(SudokuSolver.java:38)
+	at com.sudoku.IterationTest.testMediumBoard(IterationTest.java:35)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+</error>
+    </testcase>
+  </testsuite>
+  <testsuite name="com.sudoku.updater.UpdaterFromRowTest" time="0.001">
+    <testcase name="test" classname="com.sudoku.updater.UpdaterFromRowTest" time="0.001"/>
+  </testsuite>
+</testrun>

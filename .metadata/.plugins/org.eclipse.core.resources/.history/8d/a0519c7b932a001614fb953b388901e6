@@ -1,0 +1,23 @@
+package com.sudoku;
+
+/**
+ * @author Matt Kent
+ */
+public class Main {
+
+	public static void main(String[] args) {
+		Board board = initBoard();
+		while (board.containsUnsetSquares()) {
+			iterateSetSquares();
+			if (!updated) {
+				cacheBoard();
+				guess();
+			}
+		}
+		// iterate squares and update
+		// if no updates, make a guess
+		// repeat
+		// 
+	}
+	
+}

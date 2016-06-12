@@ -1,0 +1,15 @@
+package com.sudoku.guesser;
+
+import com.sudoku.Boards;
+
+/**
+ * @author Matt Kent
+ */
+public class BoardGuesserTest {
+
+	@Test
+	public void test() {
+		Board board = Boards.getBoard(Boards.getMediumBoard());
+	}
+	
+}

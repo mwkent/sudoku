@@ -1,0 +1,8 @@
+package com.sudoku.updater;
+
+/**
+ * @author Matt Kent
+ */
+public class UpdaterTest {
+
+}

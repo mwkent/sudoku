@@ -1,0 +1,54 @@
+package com.sudoku.updater;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.sudoku.Board;
+import com.sudoku.Square;
+
+/**
+ * @author Matt Kent
+ */
+public abstract class UpdaterTest {
+
+	private Board board;
+	private Updater updater;
+	private Map<Square, Integer> updatedValues;
+
+	@Before
+	public void setupUpdaterTest() {
+		updatedValues = new HashMap<Square, Integer>();
+	}
+
+	abstract void setBoard();
+
+	abstract void setUpdater();
+
+	@Test
+	public void test() {
+		updatedValues.put(board.getSquare(0, 0), 4);
+		updatedValues.put(board.getSquare(1, 1), 8);
+		updatedValues.put(board.getSquare(2, 0), 1);
+		updatedValues.put(board.getSquare(3, 4), 9);
+		updatedValues.put(board.getSquare(4, 4), 8);
+		updatedValues.put(board.getSquare(5, 4), 4);
+		updatedValues.put(board.getSquare(6, 8), 4);
+		updatedValues.put(board.getSquare(7, 0), 2);
+		updatedValues.put(board.getSquare(8, 8), 9);
+		setBoard();
+		setUpdater();
+		for (int row = 0; row < board.getNumRows(); row++) {
+			for (int col = 0; col < board.getNumCols(); col++) {
+				updater.update(board.getSquare(row, col));
+			}
+		}
+		for (final Square square : updatedValues.keySet()) {
+			Assert.assertTrue(updatedValues.get(square) == square.getValue());
+		}
+	}
+
+}

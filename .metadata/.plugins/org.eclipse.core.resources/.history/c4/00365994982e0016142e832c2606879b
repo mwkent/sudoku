@@ -1,0 +1,63 @@
+package com.sudoku;
+
+import com.sudoku.guesser.BoardGuesser;
+
+/**
+ * @author Matt Kent
+ */
+public class SudokuSolver {
+
+	private Board board;
+	private final BoardGuesser guesser;
+
+	public SudokuSolver(final Board board) {
+		setBoard(board);
+		guesser = new BoardGuesser();
+	}
+
+	private void setBoard(final Board board) {
+		this.board = board;
+	}
+
+	// check that board is valid before beginning
+	/**
+	 * Boards are copied and cached, so this method must return a new board and
+	 * cannot simply modify the one passed in.
+	 * 
+	 * @return
+	 */
+	public Board solve() {
+		if (!board.isValid()) {
+			System.err.println("The board provided is invalid");
+			System.err.println(board);
+		}
+		iterateSquares();
+		while (!isCompleted() || !board.isValid()) {
+			if (board.getUnsetSquares().size() == 0) {
+				System.out.println();
+			}
+			// System.out.println(board);
+			// System.out.println();
+			if (board.isValid()) {
+				guesser.guess(board);
+			} else {
+				while (!board.isValid()) {
+					setBoard(guesser.backtrack());
+					iterateSquares(); // board must be updated after creation
+				}
+			}
+		}
+		System.out.println(board);
+		System.out.println();
+		return board;
+	}
+
+	public void iterateSquares() {
+		board.updateFromAll();
+	}
+
+	private boolean isCompleted() {
+		return board.getUnsetSquares().isEmpty();
+	}
+
+}

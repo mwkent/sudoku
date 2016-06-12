@@ -1,0 +1,15 @@
+package com.sudoku.validator;
+
+import com.sudoku.Boards;
+
+/**
+ * @author Matt Kent
+ */
+public class UncompletedBoardValidatorTest extends AbstractValidatorTest {
+
+	@Override
+	Validator getValidator(final int[][] board) {
+		return new UncompletedBoardValidator(Boards.getBoard(board));
+	}
+
+}

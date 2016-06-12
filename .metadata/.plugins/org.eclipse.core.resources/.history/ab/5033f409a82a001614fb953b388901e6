@@ -1,0 +1,12 @@
+package com.sudoku;
+
+/**
+ * @author Matt Kent
+ */
+public class BoxValidatorTest {
+
+	private BoxValidator validator;
+	
+	
+	
+}

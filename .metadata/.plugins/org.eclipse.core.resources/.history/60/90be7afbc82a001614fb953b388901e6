@@ -1,0 +1,31 @@
+package com.sudoku.cache;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+import com.sudoku.Board;
+
+/**
+ * @author Matt Kent
+ */
+public class BoardCache implements Cache<Board> {
+
+	private final Board board;
+	private final Deque<Board> cachedBoards = new ArrayDeque<>();
+
+	public BoardCache(final Board board) {
+		this.board = board;
+	}
+
+	@Override
+	public void cache() {
+		cachedBoards.push(board.copy());
+	}
+
+	@Override
+	public Board getCached() {
+		System.out.println("Get cached board");
+		return cachedBoards.pop();
+	}
+
+}

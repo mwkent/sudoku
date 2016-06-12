@@ -1,0 +1,27 @@
+package com.sudoku.cache;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import com.sudoku.Board;
+import com.sudoku.Boards;
+
+/**
+ * @author Matt Kent
+ */
+public class BoardCacheTest {
+
+	@Test
+	public void test() {
+		final BoardCache cache = new BoardCache();
+		final Board original = Boards.getBoard(Boards.allZeros());
+		cache.cache(original);
+		final int row = 0;
+		final int col = 0;
+		original.getSquare(row, col).setValue((byte) 1);
+		final Board cachedCopy = cache.getCached();
+		Assert.assertEquals(1, original.getSquare(row, col).getValue());
+		Assert.assertEquals(0, cachedCopy.getSquare(row, col).getValue());
+	}
+
+}

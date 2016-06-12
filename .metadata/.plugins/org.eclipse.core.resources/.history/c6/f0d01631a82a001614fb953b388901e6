@@ -1,0 +1,19 @@
+package com.sudoku;
+
+import org.junit.Test;
+
+import com.sudoku.validator.BoxValidator;
+
+/**
+ * @author Matt Kent
+ */
+public class BoxValidatorTest {
+
+	private BoxValidator validator;
+
+	@Test
+	public void testAllZeros() {
+
+	}
+
+}

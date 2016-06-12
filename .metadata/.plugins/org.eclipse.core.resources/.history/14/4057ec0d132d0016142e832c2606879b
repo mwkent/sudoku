@@ -1,0 +1,33 @@
+package com.sudoku.updater;
+
+import org.junit.Test;
+
+import com.sudoku.Board;
+import com.sudoku.Boards;
+
+/**
+ * @author Matt Kent
+ */
+public class UpdaterFromBoxTest {
+
+	private static final int[][] oneBoxBoard = {
+		new int[][] //
+		{
+		/*    */{ 7, 2, 3, 0, 0, 0, 0, 0, 0 },//
+				{ 0, 8, 4, 0, 0, 0, 0, 0, 0 },//
+				{ 1, 9, 6, 0, 0, 0, 0, 0, 0 },//
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },//
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },//
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },//
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },//
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },//
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 } //
+		};
+	}
+
+	@Test
+	public void test() {
+		final Board board = Boards.getBoard(oneBoxBoard);
+	}
+
+}

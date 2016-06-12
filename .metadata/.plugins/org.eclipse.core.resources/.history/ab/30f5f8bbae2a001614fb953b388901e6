@@ -1,0 +1,41 @@
+package com.sudoku;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import com.sudoku.analysis.Analyzer;
+import com.sudoku.validator.CompletedBoardValidator;
+
+/**
+ * @author Matt Kent
+ */
+public class IterationTest {
+
+	@Test
+	public void testEasyBoard() {
+		System.out.println("EASY BOARD");
+		final Board board = new Board(Boards.getEasyBoard());
+		final SudokuSolver solver = new SudokuSolver(board);
+		solver.solve();
+		final CompletedBoardValidator validator = new CompletedBoardValidator(board);
+		final boolean valid = validator.isValid();
+		Assert.assertTrue(valid);
+	}
+
+	@Test
+	public void testMediumBoard() {
+		System.out.println();
+		System.out.println("MEDIUM BOARD");
+		final Board board = new Board(Boards.getMediumBoard());
+		final SudokuSolver solver = new SudokuSolver(board);
+		solver.solve();
+		final Analyzer analyzer = new Analyzer(board);
+		final Square leastPossibleValSquare = analyzer
+				.getSquareWithLeastPossibleValues();
+		System.out.println(leastPossibleValSquare.toFullString());
+		System.out.println(leastPossibleValSquare.getPossibleValues());
+		final CompletedBoardValidator validator = new CompletedBoardValidator(board, 3);
+		System.out.println(validator.isValid());
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.sudoku;
+
+/**
+ * @author Matt Kent
+ */
+public class BoardFormatter {
+
+	private final Board board;
+
+	public BoardFormatter(final Board board) {
+		super();
+		this.board = board;
+	}
+
+}

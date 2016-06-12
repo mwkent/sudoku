@@ -1,0 +1,14 @@
+package com.sudoku;
+
+/**
+ * @author Matt Kent
+ */
+public class BoardTest {
+
+	@Test
+	public void testCopy() {
+		Board board1 = Boards.getBoard(Boards.allZeros());
+		
+	}
+	
+}

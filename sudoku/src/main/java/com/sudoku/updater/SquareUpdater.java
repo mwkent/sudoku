@@ -1,0 +1,33 @@
+package com.sudoku.updater;
+
+import com.sudoku.Board;
+import com.sudoku.Square;
+
+/**
+ * Updates the squares around the square passed in.
+ * 
+ * @author Matt Kent
+ */
+public class SquareUpdater implements Updater {
+
+	private final BoxUpdater boxUpdater;
+	private final ColumnUpdater columnUpdater;
+	private final RowUpdater rowUpdater;
+
+	public SquareUpdater(final Board board) {
+		boxUpdater = new BoxUpdater(board);
+		columnUpdater = new ColumnUpdater(board);
+		rowUpdater = new RowUpdater(board);
+	}
+
+	@Override
+	public boolean update(final Square square) {
+		final boolean boxUpdated = boxUpdater.update(square);
+		final boolean columnUpdated = columnUpdater.update(square);
+		final boolean rowUpdated = rowUpdater.update(square);
+		if (boxUpdated || columnUpdated || rowUpdated) {
+			return true;
+		}
+		return false;
+	}
+}

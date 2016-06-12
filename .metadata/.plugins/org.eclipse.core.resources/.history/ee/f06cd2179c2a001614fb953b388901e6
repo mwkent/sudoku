@@ -1,0 +1,25 @@
+package com.sudoku.cache;
+
+import com.sudoku.Board;
+
+/**
+ * @author Matt Kent
+ */
+public class BoardCache implements Cache<Board> {
+
+	private final Board board;
+	private Board cachedBoard;
+	
+	public BoardCache(final Board board) {
+		this.board = board;
+	}
+	
+	public void cache() {
+		cachedBoard = board.copy();
+	}
+	
+	public Board getCached() {
+		return cachedBoard;
+	}
+
+}

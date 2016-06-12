@@ -1,0 +1,16 @@
+package com.sudoku;
+
+import junit.framework.Assert;
+
+/**
+ * @author Matt Kent
+ */
+public class PositionTest {
+
+	@Test
+	public void test() {
+		Position pos = Position.getInstance(125, -5);
+		Assert.assertEquals(row, pos.getRow());
+	}
+	
+}

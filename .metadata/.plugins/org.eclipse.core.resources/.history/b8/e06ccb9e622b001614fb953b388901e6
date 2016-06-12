@@ -1,0 +1,20 @@
+package com.sudoku;
+
+import junit.framework.Assert;
+
+import org.junit.Test;
+
+/**
+ * @author Matt Kent
+ */
+public class BoardTest {
+
+	@Test
+	public void testCopy() {
+		final Board original = Boards.getBoard(Boards.allZeros());
+		final Board copy = original.copy();
+		copy.getSquare(0, 0).setValue((byte) 1);
+		Assert.assertEquals(0, original.getSquare(0,0).getValue());
+	}
+
+}

@@ -1,0 +1,10 @@
+package com.sudoku.cache;
+
+/**
+ * @author Matt Kent
+ */
+public class BoardCache implements Cache {
+
+	private final Board board;
+	
+}

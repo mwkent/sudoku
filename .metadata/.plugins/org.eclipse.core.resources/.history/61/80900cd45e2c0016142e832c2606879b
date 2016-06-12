@@ -1,0 +1,56 @@
+package com.sudoku;
+
+import java.util.SortedSet;
+
+import com.sudoku.guesser.BoardGuesser;
+import com.sudoku.guesser.Guess;
+
+/**
+ * @author Matt Kent
+ */
+public class SudokuSolver {
+
+	private Board board;
+	private BoardGuesser guesser;
+
+	public SudokuSolver(final Board board) {
+		setBoard(board);
+	}
+
+	private void setBoard(final Board board) {
+		this.board = board;
+	}
+
+	public void solve() {
+		iterateSquares();
+		while (!isCompleted()) {
+			if (board.getUnsetSquares().size() == 1) {
+				System.out.println();
+			}
+			// System.out.println(board);
+			// System.out.println();
+			if (board.isValid()) {
+				boardCache.cache(board);
+				guess();
+			} else {
+				while (!board.isValid()) {
+					setBoard(boardCache.getCached());
+					removeInvalidGuess();
+				}
+				// boardCache.cache(board);
+				// emptyGuess();
+			}
+		}
+		// System.out.println(board);
+		// System.out.println();
+	}
+
+	public void iterateSquares() {
+		board.updateFromAll();
+	}
+
+	private boolean isCompleted() {
+		return board.getUnsetSquares().isEmpty();
+	}
+
+}

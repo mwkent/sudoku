@@ -1,0 +1,58 @@
+package com.sudoku;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang3.tuple.Pair;
+
+/**
+ * @author Matt Kent
+ */
+public class Position {
+
+	private static final Map<Pair<Integer, Integer>, Position> CACHED_POSITIONS = new HashMap<>();
+	private static final List<Position> CACHED_POSITIONS = new ArrayList<Position>();
+	static {
+		for (int row = 0; row < NUM_ROWS; row++) {
+			for (int col = 0; col < NUM_COLS; col++) {
+				CACHED_POSITIONS.add(getCachedPositionIndex(row, col), null);
+			}
+		}
+	}
+
+	private final int row;
+	private final int col;
+
+	public static Position getInstance(final int row, final int col) {
+		if (CACHED_POSITIONS.get(getCachedPositionIndex(row, col)) == null) {
+			CACHED_POSITIONS.add(getCachedPositionIndex(row, col),
+					new Position(row, col));
+		}
+		return CACHED_POSITIONS.get(getCachedPositionIndex(row, col));
+	}
+
+	private Position(final int row, final int col) {
+		this.row = row;
+		this.col = col;
+	}
+
+	private static int getCachedPositionIndex(final int row, final int col) {
+		return row * NUM_ROWS + col;
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public int getCol() {
+		return col;
+	}
+
+	@Override
+	public String toString() {
+		return "(" + row + ", " + col + ")";
+	}
+
+}

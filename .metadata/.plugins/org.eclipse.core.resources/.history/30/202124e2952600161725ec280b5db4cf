@@ -1,0 +1,98 @@
+package com.sudoku;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * @author Matt Kent
+ */
+public class Square {
+
+	private static final Set<Byte> VALID_VALUES = Util.asHashSet((byte) 1,
+			(byte) 2, (byte) 3, (byte) 4, (byte) 5, (byte) 6, (byte) 7,
+			(byte) 8, (byte) 9);
+	public static final byte INVALID_VALUE = 0;
+
+	private byte value;
+	private final Position pos;
+	private final Set<Byte> possibleValues = new HashSet<Byte>();
+
+	Square(final Position pos) {
+		this(INVALID_VALUE, pos);
+	}
+
+	Square(final byte value, final Position pos) {
+		this.pos = pos;
+		this.value = value;
+		if (this.value == INVALID_VALUE) {
+			initPossibleValues();
+		}
+	}
+
+	private void initPossibleValues() {
+		for (final Byte val : VALID_VALUES) {
+			possibleValues.add(val);
+		}
+	}
+
+	public void clearPossibleValues() {
+		possibleValues.clear();
+	}
+
+	public Set<Byte> getPossibleValues() {
+		return new HashSet<Byte>(possibleValues);
+	}
+
+	public boolean removePossibleValueAndUpdate(final byte val) {
+		// if (pos.getRow() == 0 && pos.getCol() == 5) {
+		// System.out.println("removing " + val);
+		// System.out.println(possibleValues);
+		// }
+		possibleValues.remove(val);
+		if (possibleValues.size() == 1 && value == 0) {
+			setValue(possibleValues.iterator().next());
+			return true;
+		}
+		return false;
+	}
+
+	public Position getPosition() {
+		return pos;
+	}
+
+	public byte getValue() {
+		return value;
+	}
+
+	public void setValue(final byte value) {
+		if (this.value != INVALID_VALUE) {
+			throw new IllegalStateException("Square " + toFullString()
+					+ " is already set");
+		}
+		if (!VALID_VALUES.contains(value)) {
+			throw new IllegalArgumentException("value: " + value
+					+ " is invalid. Valid list is " + VALID_VALUES);
+		}
+		this.value = value;
+	}
+
+	boolean isSet() {
+		return value != INVALID_VALUE;
+	}
+
+	@Override
+	public String toString() {
+		return "" + value;
+	}
+
+	public String toFullString() {
+		return pos + ", val=" + value;
+	}
+
+	@Override
+	public boolean equals(final Object o) {
+		if (!(o instanceof Square)) {
+
+		}
+	}
+}

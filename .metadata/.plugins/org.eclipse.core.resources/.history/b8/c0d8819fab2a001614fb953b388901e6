@@ -1,0 +1,18 @@
+package com.sudoku.validator;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import com.sudoku.Boards;
+
+/**
+ * @author Matt Kent
+ */
+public class BoxValidatorTest extends AbstractValidatorTest {
+
+	@Override
+	Validator getValidator(final int[][] board) {
+		return new BoxValidator(Boards.getBoard(board));
+	}
+
+}

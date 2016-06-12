@@ -1,0 +1,40 @@
+package com.sudoku.updater;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import com.sudoku.Board;
+import com.sudoku.Boards;
+
+/**
+ * @author Matt Kent
+ */
+public class UpdaterFromBoxTest {
+
+	private static final int[][] ONE_BOX_BOARD = new int[][] //
+	{
+	/*    */{ 4, 3, 5, 2, 6, 9, 7, 8, 1 },//
+			{ 6, 8, 2, 5, 7, 1, 4, 9, 3 },//
+			{ 1, 9, 7, 8, 3, 4, 5, 6, 2 },//
+			{ 8, 2, 6, 1, 9, 5, 3, 4, 7 },//
+			{ 3, 7, 4, 6, 8, 2, 9, 1, 5 },//
+			{ 9, 5, 1, 7, 4, 3, 6, 2, 8 },//
+			{ 5, 1, 9, 3, 2, 6, 8, 7, 4 },//
+			{ 2, 4, 8, 9, 5, 7, 1, 3, 6 },//
+			{ 7, 6, 3, 4, 1, 8, 2, 5, 9 } //
+	};
+
+	@Test
+	public void test() {
+		Map<Square, Integer> updatedValues = new HashMap<>();
+		final Board board = Boards.getBoard(ONE_BOX_BOARD);
+		final Updater updater = new UpdaterFromBox(board);
+		for (int row = 0; row < board.getBoxSize(); row++) {
+			for (int col = 0; col < board.getBoxSize(); col++) {
+				updater.update(board.getSquare(row, col));
+			}
+		}
+		Assert.assertEquals(5, board.getSquare(1, 0).getValue());
+	}
+
+}

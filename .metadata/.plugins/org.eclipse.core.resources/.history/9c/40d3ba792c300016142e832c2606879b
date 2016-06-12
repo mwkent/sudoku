@@ -1,0 +1,20 @@
+package com.sudoku;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+/**
+ * @author Matt Kent
+ */
+public class PositionTest {
+
+	@Test
+	public void test() {
+		int row = 125;
+		int col = -5;
+		final Position pos = Position.getInstance(row, col);
+		Assert.assertEquals(row, pos.getRow());
+		Assert.assertEquals(col, pos.getCol());
+	}
+
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="com.sudoku.validator" project="sudoku" tests="25" started="25" failures="0" errors="0" ignored="0">
+  <testsuite name="com.sudoku.validator.ColumnValidatorTest" time="0.001">
+    <testcase name="testAllZeros" classname="com.sudoku.validator.ColumnValidatorTest" time="0.0"/>
+    <testcase name="testIncompleteBoard" classname="com.sudoku.validator.ColumnValidatorTest" time="0.0"/>
+    <testcase name="testCompletedBoard" classname="com.sudoku.validator.ColumnValidatorTest" time="0.0"/>
+    <testcase name="testInvalidBoard" classname="com.sudoku.validator.ColumnValidatorTest" time="0.001"/>
+  </testsuite>
+  <testsuite name="com.sudoku.validator.BoxValidatorTest" time="0.0">
+    <testcase name="testAllZeros" classname="com.sudoku.validator.BoxValidatorTest" time="0.0"/>
+    <testcase name="testIncompleteBoard" classname="com.sudoku.validator.BoxValidatorTest" time="0.0"/>
+    <testcase name="testCompletedBoard" classname="com.sudoku.validator.BoxValidatorTest" time="0.0"/>
+    <testcase name="testInvalidBoard" classname="com.sudoku.validator.BoxValidatorTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="com.sudoku.validator.UncompletedBoardValidatorTest" time="0.004">
+    <testcase name="testTestBoard" classname="com.sudoku.validator.UncompletedBoardValidatorTest" time="0.0"/>
+    <testcase name="testAllZeros" classname="com.sudoku.validator.UncompletedBoardValidatorTest" time="0.0"/>
+    <testcase name="testIncompleteBoard" classname="com.sudoku.validator.UncompletedBoardValidatorTest" time="0.0"/>
+    <testcase name="testCompletedBoard" classname="com.sudoku.validator.UncompletedBoardValidatorTest" time="0.004"/>
+    <testcase name="testInvalidBoard" classname="com.sudoku.validator.UncompletedBoardValidatorTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="com.sudoku.validator.RowValidatorTest" time="0.025">
+    <testcase name="testAllZeros" classname="com.sudoku.validator.RowValidatorTest" time="0.008"/>
+    <testcase name="testIncompleteBoard" classname="com.sudoku.validator.RowValidatorTest" time="0.007"/>
+    <testcase name="testCompletedBoard" classname="com.sudoku.validator.RowValidatorTest" time="0.0"/>
+    <testcase name="testInvalidBoard" classname="com.sudoku.validator.RowValidatorTest" time="0.01"/>
+  </testsuite>
+  <testsuite name="com.sudoku.validator.CompletedBoardValidatorTest" time="0.062">
+    <testcase name="testAllZeros" classname="com.sudoku.validator.CompletedBoardValidatorTest" time="0.059"/>
+    <testcase name="testIncompleteBoard" classname="com.sudoku.validator.CompletedBoardValidatorTest" time="0.001"/>
+    <testcase name="testCompletedBoard" classname="com.sudoku.validator.CompletedBoardValidatorTest" time="0.001"/>
+    <testcase name="testInvalidBoard" classname="com.sudoku.validator.CompletedBoardValidatorTest" time="0.001"/>
+  </testsuite>
+  <testsuite name="com.sudoku.validator.SquareValidatorTest" time="0.002">
+    <testcase name="testAllZeros" classname="com.sudoku.validator.SquareValidatorTest" time="0.0"/>
+    <testcase name="testIncompleteBoard" classname="com.sudoku.validator.SquareValidatorTest" time="0.001"/>
+    <testcase name="testCompletedBoard" classname="com.sudoku.validator.SquareValidatorTest" time="0.0"/>
+    <testcase name="testInvalidBoard" classname="com.sudoku.validator.SquareValidatorTest" time="0.001"/>
+  </testsuite>
+</testrun>
